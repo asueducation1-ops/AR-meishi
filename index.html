@@ -1,38 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <title>AR名刺</title>
-
-  <script src="https://unpkg.com/aframe@1.4.2/dist/aframe.min.js"></script>
-  <script src="https://unpkg.com/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
-
-  <style>
-    body { margin: 0; overflow: hidden; }
-  </style>
+  <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
 </head>
-
-<body>
-  <a-scene
-    mindar-image="imageTargetSrc: marker/qr.mind;"
-    embedded
-    vr-mode-ui="enabled: false"
-    device-orientation-permission-ui="enabled: true">
-
-    <a-assets>
-      <a-asset-item id="model" src="hoshinoAR0221.glb"></a-asset-item>
-    </a-assets>
-
+<body style="margin:0">
+  <a-scene mindar-image="imageTargetSrc: targets.mind;">
+    <a-camera></a-camera>
     <a-entity mindar-image-target="targetIndex: 0">
-      <a-gltf-model
-        src="#model"
-        position="0 0 0"
-        scale="0.5 0.5 0.5"
-        animation="property: scale; from: 0 0 0; to: 0.5 0.5 0.5; dur: 800; easing: easeOutBack">
-      </a-gltf-model>
+      <a-box color="red" position="0 0 0.2"></a-box>
     </a-entity>
-
-    <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
   </a-scene>
 </body>
 </html>
+結果
