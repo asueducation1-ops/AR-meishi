@@ -1,16 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
+  <meta charset="UTF-8" />
+  <title>AR名刺</title>
+
+  <!-- A-Frame -->
   <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+
+  <!-- MindAR -->
   <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
 </head>
-<body style="margin:0">
-  <a-scene mindar-image="imageTargetSrc: targets.mind;">
-    <a-camera></a-camera>
+
+<body style="margin:0; overflow:hidden;">
+  <a-scene
+    mindar-image="imageTargetSrc: targets.mind;"
+    vr-mode-ui="enabled: false"
+    device-orientation-permission-ui="enabled: false">
+
+    <!-- 3Dモデルを事前に読み込む -->
+    <a-assets>
+      <a-asset-item id="avatar" src="model.glb"></a-asset-item>
+    </a-assets>
+
+    <!-- カメラ -->
+    <a-camera
+      position="0 0 0"
+      look-controls="enabled: false">
+    </a-camera>
+
+    <!-- QRを認識したときに表示 -->
     <a-entity mindar-image-target="targetIndex: 0">
-      <a-box color="red" position="0 0 0.2"></a-box>
+      <a-entity
+        gltf-model="#avatar"
+        position="0 0 0.2"
+        scale="0.2 0.2 0.2">
+      </a-entity>
     </a-entity>
+
   </a-scene>
 </body>
 </html>
-結果
